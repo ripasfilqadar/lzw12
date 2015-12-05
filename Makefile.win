@@ -1,0 +1,38 @@
+# Project: lzw12
+# Makefile created by Dev-C++ 5.3.0.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main-c.o lzw12.o bitio.o errhand.o $(RES)
+LINKOBJ  = main-c.o lzw12.o bitio.o errhand.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+BIN      = lzw12.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before lzw12.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "lzw12.exe" $(LIBS)
+
+main-c.o: main-c.c
+	$(CC) -c main-c.c -o main-c.o $(CFLAGS)
+
+lzw12.o: lzw12.c
+	$(CC) -c lzw12.c -o lzw12.o $(CFLAGS)
+
+bitio.o: bitio.c
+	$(CC) -c bitio.c -o bitio.o $(CFLAGS)
+
+errhand.o: errhand.c
+	$(CC) -c errhand.c -o errhand.o $(CFLAGS)
